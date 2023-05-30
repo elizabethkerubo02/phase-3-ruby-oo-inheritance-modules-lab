@@ -1,6 +1,11 @@
+require_relative '../concerns/paramable'
 require 'pry'
 
 class Song
+  extend Memorable::reset_all
+  extend Memorable::count
+  include Paramable
+
   attr_accessor :name
   attr_reader :artist
 
@@ -18,19 +23,19 @@ class Song
     @@songs
   end
 
-  def self.reset_all
-    self.all.clear
-  end
+  # def self.reset_all
+  #   self.all.clear
+  # end
 
-  def self.count
-    self.all.count
-  end
+  # def self.count
+  #   self.all.count
+  # end
 
   def artist=(artist)
     @artist = artist
   end
 
-  def to_param
-    name.downcase.gsub(' ', '-')
-  end
+  # def to_param
+  #   name.downcase.gsub(' ', '-')
+  # end
 end
